@@ -20,7 +20,7 @@
     <bpmn:scriptTask id="Activity_1rhdiqr" name="Aufgabe-Skript">
       <bpmn:incoming>Flow_1rorh35</bpmn:incoming>
       <bpmn:outgoing>Flow_0al8hyb</bpmn:outgoing>
-      <bpmn:script></bpmn:script>
+      <bpmn:script>Test</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:endEvent id="Event_0jb016d">
       <bpmn:incoming>Flow_0al8hyb</bpmn:incoming>

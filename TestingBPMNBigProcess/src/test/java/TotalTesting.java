@@ -1,6 +1,7 @@
 
 
-import generated.process_0a1uc4m.TC_Big_Process_1;
+
+import generated.process_0a1uc4m.TC_Yes;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -12,9 +13,12 @@ public class TotalTesting {
 //------------------TASKS----------------------------
 
     @Rule
-    public TC_Big_Process_1 tc01 = new TC_Big_Process_1();
+    public TC_Yes tc01 = new TC_Yes();
     @Test
-    public void tc01AufgabeBenutzer() { tc01.createExecutor().execute(); }
+    public void tc01AufgabeBenutzer() {
+        tc01.handleActivity_0gad5d4().withVariable("check", true);
+        tc01.createExecutor().execute();
+    }
 
 
 
