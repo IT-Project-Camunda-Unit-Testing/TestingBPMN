@@ -1,0 +1,3 @@
+
+w
+Gtarget/bpmndt/generated/process_1ijt5ts/TC_12_2a_Gatways_AND_AND_a.java,4\5\45482edea342f7d905fdebbc619a619700b42dd5

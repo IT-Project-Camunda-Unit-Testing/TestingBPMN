@@ -1,0 +1,51 @@
+
+ARE WE THE CHOSEN ONES?
+
+1. Schritt: Dummy-Test anlegen
+Schaun obs kompiliert
+
+2. Schaun welche Arten von Elementen vorkommen und die entsprechend konfigurieren gemäß folgender Liste
+Fürs Unit Testing das Modell vereinfachen
+
+Bedingungen:
+
+01 Aufgabe-Senden:
+	Implementation: Expression
+	Expression: true
+	
+02 Aufgabe-Empfangen:
+	Global Message referenced: anlegen
+	Framework setzt "instance.apply(Activity_name);" selbstständig
+	
+03 Aufgabe-Benutzer:
+	keine Bedingungen
+	Framework setzt "instance.apply(Activity_name);" selbstständig
+	
+04 Aufgabe-Manuell:
+	keine Bedingungen
+	keine systembedingten Aufgaben - kein Eingreifen erforderlich
+	
+05 Aufgabe-Geschäftsregel:
+	keine Bedingungen
+	keine systembedingten Aufgaben - kein Eingreifen erforderlich
+
+06 Aufgabe-Service:
+	Implementation: Expression
+	Expression: true
+	
+07 Aufgabe-Skript:
+	Erstaunlicherweise auch ohne Skript testbar
+
+11 Gateway-XOR:
+	Entscheidung muss vom Test übergeben werden und mit dem Pfad zusammenpassen
+	testinstanz.handleActivityname().withVariable("Entscheidervariable",gewünschtesErgebnis);
+	dann wie gewohnt Executor executen
+
+12-1 Gateway-AND-XOR
+	Keine Besonderheiten
+	
+12-2 Gateway-AND-AND
+	Noch nicht mit dem Plugin zuverlässig testbar weil er beide Pfade beschreiten muss, damit beide Token beim vereinigenden AND ankommen. Der Test läuft aber auch durch obwohl noch nicht der zweite Prozessteil angekommen ist.
+	
+	" Bei einem Joining Parallel Gateway wartet die Prozessinstanz auf alle eingehenden Sequenzflüsse. An diesen Stellen am besten etwas aufpassen, wo der Test beginnt. Für Parallel Gateways muss ich mir generell noch eine schlaue Lösung ausdenken."
+	
