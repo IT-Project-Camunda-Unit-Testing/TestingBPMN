@@ -4,23 +4,17 @@ import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.assertTh
 
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.community.bpmndt.api.AbstractJUnit4TestCase;
-import org.camunda.community.bpmndt.api.CallActivityHandler;
 import org.camunda.community.bpmndt.api.EventHandler;
-import org.camunda.community.bpmndt.api.JobHandler;
 import org.camunda.community.bpmndt.api.UserTaskHandler;
 import org.junit.runner.Description;
 
 /**
- * From: startEvent: Event_1h2pir3, To: endEvent: Event_10zrg5f, Length: 12
+ * From: startEvent: Event_1h2pir3, To: endEvent: Event_0f1jfs5, Length: 8
  */
-public class TC_Big_Process_2 extends AbstractJUnit4TestCase {
+public class TC_Big_Process_3 extends AbstractJUnit4TestCase {
   private UserTaskHandler Activity_0gad5d4;
 
   private EventHandler Event_1efui7x;
-
-  private JobHandler Activity_1abu36nBefore;
-
-  private CallActivityHandler Activity_1abu36n;
 
   @Override
   protected void starting(Description description) {
@@ -31,12 +25,6 @@ public class TC_Big_Process_2 extends AbstractJUnit4TestCase {
 
     // intermediateCatchEvent: Event_1efui7x
     Event_1efui7x = new EventHandler(getProcessEngine(), "Event_1efui7x", "FakeMassage");
-
-    // callActivity: Activity_1abu36n
-    Activity_1abu36nBefore = new JobHandler(getProcessEngine(), "Activity_1abu36n");
-
-    // callActivity: Activity_1abu36n
-    Activity_1abu36n = new CallActivityHandler(instance, "Activity_1abu36n");
   }
 
   @Override
@@ -60,28 +48,14 @@ public class TC_Big_Process_2 extends AbstractJUnit4TestCase {
     // exclusiveGateway: Gateway_1g0iea8
     assertThat(pi).hasPassed("Gateway_1g0iea8");
 
-    // businessRuleTask: Activity_1ayve8o
-    assertThat(pi).hasPassed("Activity_1ayve8o");
+    // serviceTask: Activity_01tstfq
+    assertThat(pi).hasPassed("Activity_01tstfq");
 
-    // parallelGateway: Gateway_1d0hzil
-    assertThat(pi).hasPassed("Gateway_1d0hzil");
+    // boundaryEvent: Event_0gg0mgg
+    assertThat(pi).hasPassed("Event_0gg0mgg");
 
-    // task: Activity_1dhmil3
-    assertThat(pi).hasPassed("Activity_1dhmil3");
-
-    // parallelGateway: Gateway_02uoolp
-    assertThat(pi).hasPassed("Gateway_02uoolp");
-
-    // scriptTask: Activity_0xud46i
-    assertThat(pi).hasPassed("Activity_0xud46i");
-
-    // callActivity: Activity_1abu36n
-    assertThat(pi).isWaitingAt("Activity_1abu36n");
-    instance.apply(Activity_1abu36nBefore);
-    assertThat(pi).hasPassed("Activity_1abu36n");
-
-    // endEvent: Event_10zrg5f
-    assertThat(pi).hasPassed("Event_10zrg5f");
+    // endEvent: Event_0f1jfs5
+    assertThat(pi).hasPassed("Event_0f1jfs5");
   }
 
   @Override
@@ -91,7 +65,7 @@ public class TC_Big_Process_2 extends AbstractJUnit4TestCase {
 
   @Override
   public String getEnd() {
-    return "Event_10zrg5f";
+    return "Event_0f1jfs5";
   }
 
   @Override
@@ -116,12 +90,5 @@ public class TC_Big_Process_2 extends AbstractJUnit4TestCase {
    */
   public EventHandler handleEvent_1efui7x() {
     return Event_1efui7x;
-  }
-
-  /**
-   * Returns the handler for callActivity: Activity_1abu36n
-   */
-  public CallActivityHandler handleActivity_1abu36n() {
-    return Activity_1abu36n;
   }
 }

@@ -1,6 +1,7 @@
 
 import generated.process_021xizn.TC_07_Aufgabe_Skript;
 import generated.process_03zhach.TC_02_Aufgabe_Empfangen;
+import generated.process_04q2mi0.TC_26_Call_Activity_1;
 import generated.process_07fv0c5.TC_23_1_Timer_Event_Cycle1;
 import generated.process_07fv0c5.TC_23_1_Timer_Event_Cycle2;
 import generated.process_09ftgd9.TC_23_2_Timer_Event_Date1;
@@ -19,6 +20,7 @@ import generated.process_1iqjuag.TC_12_1b_Gateway_AND_XOR_PathB;
 import generated.process_1j9q4qa.TC_25_Kompensation_Event1;
 import generated.process_1jharh6.TC_23_3_Timer_Event_Duration1;
 import generated.process_1jharh6.TC_23_3_Timer_Event_Duration2;
+import generated.process_1r9rtcm.TC_26_Call_Activity_2;
 import generated.process_1s7lcah.TC_21_Message_Throw;
 import generated.process_1vylsaa.TC_06_Aufgabe_Service;
 import generated.process_1dxzyrd.TC_03_Aufgabe_Benutzer;
@@ -214,6 +216,24 @@ public class TotalTesting {
     public void tc25_1KomensationEvent() {
         tc25_1.handleActivity_1idrajh().withVariable("check",false);
         tc25_1.createExecutor().execute();
+    }
+
+    // Call Activity 1
+
+    @Rule
+    public TC_26_Call_Activity_1 tc26_1 = new TC_26_Call_Activity_1();
+    @Test
+    public void tc26_1CallActivity() {
+        tc26_1.createExecutor().execute();
+    }
+
+    // Call Activity 2
+
+    @Rule
+    public TC_26_Call_Activity_2 tc26_2 = new TC_26_Call_Activity_2();
+    @Test
+    public void tc26_2CallActivity() {
+        tc26_2.createExecutor().execute();
     }
 
 

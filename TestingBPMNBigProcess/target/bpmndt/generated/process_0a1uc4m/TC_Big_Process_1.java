@@ -4,17 +4,23 @@ import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.assertTh
 
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.community.bpmndt.api.AbstractJUnit4TestCase;
+import org.camunda.community.bpmndt.api.CallActivityHandler;
 import org.camunda.community.bpmndt.api.EventHandler;
+import org.camunda.community.bpmndt.api.JobHandler;
 import org.camunda.community.bpmndt.api.UserTaskHandler;
 import org.junit.runner.Description;
 
 /**
- * From: startEvent: Event_1h2pir3, To: endEvent: Event_1eudte4, Length: 11
+ * From: startEvent: Event_1h2pir3, To: endEvent: Event_10zrg5f, Length: 12
  */
 public class TC_Big_Process_1 extends AbstractJUnit4TestCase {
   private UserTaskHandler Activity_0gad5d4;
 
   private EventHandler Event_1efui7x;
+
+  private JobHandler Activity_1abu36nBefore;
+
+  private CallActivityHandler Activity_1abu36n;
 
   @Override
   protected void starting(Description description) {
@@ -25,6 +31,12 @@ public class TC_Big_Process_1 extends AbstractJUnit4TestCase {
 
     // intermediateCatchEvent: Event_1efui7x
     Event_1efui7x = new EventHandler(getProcessEngine(), "Event_1efui7x", "FakeMassage");
+
+    // callActivity: Activity_1abu36n
+    Activity_1abu36nBefore = new JobHandler(getProcessEngine(), "Activity_1abu36n");
+
+    // callActivity: Activity_1abu36n
+    Activity_1abu36n = new CallActivityHandler(instance, "Activity_1abu36n");
   }
 
   @Override
@@ -63,8 +75,13 @@ public class TC_Big_Process_1 extends AbstractJUnit4TestCase {
     // scriptTask: Activity_0xud46i
     assertThat(pi).hasPassed("Activity_0xud46i");
 
-    // endEvent: Event_1eudte4
-    assertThat(pi).hasPassed("Event_1eudte4");
+    // callActivity: Activity_1abu36n
+    assertThat(pi).isWaitingAt("Activity_1abu36n");
+    instance.apply(Activity_1abu36nBefore);
+    assertThat(pi).hasPassed("Activity_1abu36n");
+
+    // endEvent: Event_10zrg5f
+    assertThat(pi).hasPassed("Event_10zrg5f");
   }
 
   @Override
@@ -74,7 +91,7 @@ public class TC_Big_Process_1 extends AbstractJUnit4TestCase {
 
   @Override
   public String getEnd() {
-    return "Event_1eudte4";
+    return "Event_10zrg5f";
   }
 
   @Override
@@ -99,5 +116,12 @@ public class TC_Big_Process_1 extends AbstractJUnit4TestCase {
    */
   public EventHandler handleEvent_1efui7x() {
     return Event_1efui7x;
+  }
+
+  /**
+   * Returns the handler for callActivity: Activity_1abu36n
+   */
+  public CallActivityHandler handleActivity_1abu36n() {
+    return Activity_1abu36n;
   }
 }
