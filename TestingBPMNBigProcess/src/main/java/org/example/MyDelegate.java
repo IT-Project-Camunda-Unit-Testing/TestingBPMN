@@ -9,5 +9,5 @@ public class MyDelegate implements JavaDelegate {
     public void execute(DelegateExecution delegateExecution) throws Exception {
         throw new BpmnError("XYZ");
     }
-    //this is a comment
+    //PR SE
 }
